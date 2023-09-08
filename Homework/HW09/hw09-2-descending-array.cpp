@@ -23,3 +23,34 @@
         99-0 : 13 9 6 5 4 1 1
 
 */
+
+#include <stdio.h>
+
+int main() {
+    
+    int array[ 99 ] ;
+    int check = 0 ;
+    int cout = 0;
+
+    while ( check != -1) { // รับค่าจนสิ้น -1 
+        printf ( "Input : \n" ) ;
+        scanf ( "%d", &check ) ;
+        if ( check != -1 ) {
+            array[ cout ] = check ;
+            cout++ ;
+        } // end if
+    } // end while
+    
+    printf ( "0-99 :" ) ;
+    for ( int i = 0 ; i < cout ; i++ ) { // แสดงเลขในกล่อง 0-99
+        printf ( " %d", array[ i ] ) ;
+    } // end for
+    printf ( "\n" ) ;
+
+    printf ( "99-0 :" ) ;
+    for ( int i = cout - 1 ; i >= 0 ; i-- ) { // แสดงเลขในกล่อง 99-0
+        printf( " %d", array[ i ] ) ;
+    } // end for
+
+    return 0 ;
+}
