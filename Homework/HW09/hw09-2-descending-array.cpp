@@ -30,7 +30,8 @@ int main() {
     
     int array[ 99 ] ;
     int check = 0 ;
-    int cout = 0;
+    int cout = 0 ;
+    int temp = 0 ;
 
     while ( check != -1) { // รับค่าจนสิ้น -1 
         printf ( "Input : \n" ) ;
@@ -41,16 +42,37 @@ int main() {
         } // end if
     } // end while
     
-    printf ( "0-99 :" ) ;
-    for ( int i = 0 ; i < cout ; i++ ) { // แสดงเลขในกล่อง 0-99
-        printf ( " %d", array[ i ] ) ;
-    } // end for
-    printf ( "\n" ) ;
+    // เรียงจากเลขน้อยไปหามาก โดยการใช้เลขแรกเปรียบเทียบกับทุกเลข ถ้าจริงก็ให้เลขทั้งสองสลับกัน
+    for ( int i = 0 ; i < cout ; ++i ) { // เพื่อกำหนด i เพื่อใช้เปรียบเทียบตัวแรก
+      for( int j = i + 1 ; j < cout ; ++j ) { // เพื่อกำหนด j เพื่อกำหนดเลขถัดไป เพื่อเปรียบเทียบกับ i 
+        if ( array[ i ] > array[ j ] ) { // ถ้าเลขแรกมีค่ามากกว่าเลขที่สอง จะให้ เลขทั้งสองสลับกัน
+            temp = array[ i ];
+            array[ i ] = array[ j ] ;
+            array[ j ] = temp ;
+            } // end if
+        } // end for j
+    } // end for i
 
-    printf ( "99-0 :" ) ;
-    for ( int i = cout - 1 ; i >= 0 ; i-- ) { // แสดงเลขในกล่อง 99-0
-        printf( " %d", array[ i ] ) ;
+    printf ( "0-99 :" ) ;
+    for ( int i = 0 ; i < cout ; ++i ) {
+      printf (" %d", array[ i ] ) ;
+    } // end for
+
+    // เรียงจากเลขมากไปหาน้อย โดยใช้วิธีเดิม
+    for ( int i = 0 ; i < cout ; ++i ) { // เพื่อกำหนด i เพื่อใช้เปรียบเทียบตัวแรก
+      for( int j = i + 1 ; j < cout ; ++j ) { // เพื่อกำหนด j เพื่อกำหนดเลขถัดไป เพื่อเปรียบเทียบกับ i 
+        if ( array[ i ] < array[ j ] ) { // ถ้าเลขแรกมีค่ามากกว่าเลขที่สอง จะให้ เลขทั้งสองสลับกัน
+            temp = array[ i ];
+            array[ i ] = array[ j ] ;
+            array[ j ] = temp ;
+            } // end if
+        } // end for j
+    } // end for i
+
+    printf ( "\n99-0 :" ) ;
+    for ( int i = 0 ; i < cout ; ++i ) {
+      printf (" %d", array[ i ] ) ;
     } // end for
 
     return 0 ;
-}
+} // end main
